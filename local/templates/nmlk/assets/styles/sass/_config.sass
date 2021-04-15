@@ -1,0 +1,333 @@
+// USER VARIABLES SECTION
+
+$accent: #005291 // Accent Color
+$fontsize: 16px // Body Font Size
+$textcolor: #333 // Text Color
+$lineheight: 1.65 // Document Line Height
+$userfont: Circe, sans-serif // User Font Family
+$systemfont: -apple-system, BlinkMacSystemFont, Arial, sans-serif // System Font Family
+
+// Bootstrap compatible gutter variable => $gutter
+$grid-gutter-width: 30px
+$gutter: $grid-gutter-width
+
+// IMPORT SECTION
+
+@import 'node_modules/bootstrap/scss/bootstrap-reboot.scss' // Bootstrap Reboot collection
+@import 'node_modules/bootstrap/scss/mixins/_breakpoints.scss' // Bootstrap Breakpoints mixin
+// @import 'node_modules/bootstrap/scss/bootstrap-grid.scss' // Optional Bootstrap Grid
+// @import 'node_modules/bootstrap/scss/utilities/_sizing.scss' // Optional Bootstrap Utilites
+
+@mixin background($url, $pos)
+ background-image: url($url)
+ background-repeat: no-repeat
+ background-position: $pos
+ background-size: auto auto
+
+// FONTS LOAD SECTION
+
+@mixin font($fname, $fstyle, $fweight, $furl)
+	@font-face
+		font-family: $fname
+		font-style: $fstyle
+		font-weight: $fweight
+		src: url($furl) format('woff2')
+
+@include font('Circe', normal, 100, '../fonts/CirceThin/CirceThin.woff2')
+@include font('Circe', normal, 300, '../fonts/CirceLight/CirceLight.woff2')
+@include font('Circe', normal, 400, '../fonts/CirceRegular/CirceRegular.woff2')
+@include font('Circe', normal, bold, '../fonts/CirceBold/CirceBold.woff2')
+@include font('Circe', normal, 800, '../fonts/CirceExtraBold/CirceExtraBold.woff2')
+
+// GENERAL DOCUMENT STYLES
+
+a, div, h1, h2, h3, li, p, section, span, strong
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+a
+ text-decoration: none
+ &:hover
+  text-decoration: none
+
+::placeholder
+	color: #666
+
+::selection
+	color: #005291
+
+input, textarea
+	outline: none
+	&:focus:required:invalid
+		border-color: red
+	&:required:valid
+		border-color: green
+
+body.competence
+ @include background('../images/dist/bg/bg-test.png', top center)
+ background-size: cover
+
+body.modelСompetence
+ @include background('../images/dist/bg/bg-test2.png', top center)
+ background-size: cover
+
+body
+	font-family: $userfont
+	font-size: $fontsize
+	line-height: $lineheight
+	color: $textcolor
+	min-width: 320px
+	position: relative
+ background: linear-gradient(156.73deg, rgba(255, 255, 255, 0.75) 0%, rgba(252, 252, 252, 0.75) 17.2%, rgba(251, 247, 247, 0.75) 22.89%, rgba(231, 231, 231, 0.75) 45.64%, rgba(255, 255, 255, 0.75) 66.63%, rgba(255, 255, 255, 0.75) 76.21%, rgba(236, 236, 236, 0.75) 89.77%, rgba(227, 227, 227, 0.75) 96.53%), #FFFFFF
+
+main
+ overflow-x: hidden
+
+body.home
+ &::before
+  content: ''
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 35.3vw
+  background-image: url("../images/dist/bg/home-bg.png")
+  background-repeat: no-repeat
+  background-size: 100% auto
+  background-position: top center
+
+.containers
+ max-width: 1200px
+ padding-left: 20px
+ padding-right: 20px
+ width: 100%
+ margin-left: auto
+ margin-right: auto
+
+.container
+ max-width: 1440px
+ width: 100%
+ padding-left: 20px
+ padding-right: 20px
+ margin-left: auto
+ margin-right: auto
+
+button
+ background-color: transparent
+ border: none
+
+.cart-button
+ position: fixed
+ top: 200px
+ right: 10px
+ z-index: 999
+ width: 90px
+ height: 90px
+ border-radius: 50%
+ overflow: hidden
+ box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.07)
+ background-color: #fff
+ background-image: url('../images/dist/icons/cart.svg')
+ background-repeat: no-repeat
+ background-position: top 20px center
+ span
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: 14px
+  line-height: 16px
+  position: absolute
+  z-index: 9999
+  color: $accent
+  font-weight: 900
+  width: 27px
+  height: 27px
+  background-color: #fff
+  border-radius: 50%
+  top: 15px
+  right: 13px
+ .btn-cart
+  display: flex
+  justify-content: center
+  align-items: flex-end
+  width: 100%
+  height: 100%
+  font-size: 14px
+  line-height: 16px
+  font-weight: 300
+  color: $accent
+  padding-bottom: 18px
+
+.page-404
+ min-height: 69.3vh
+ padding-left: 20px
+ padding-right: 20px
+ .h1
+  font-weight: bold
+  font-size: 200px
+  line-height: 160%
+  margin-bottom: 0
+  margin-top: 40px
+  text-align: center
+  color: $accent
+ &-wrapper
+  max-width: 960px
+  width: 100%
+  height: 205px
+  margin-left: auto
+  margin-right: auto
+  position: relative
+  &::before
+   content: ''
+   @include background('../images/dist/icons/404-top.svg', center center)
+   position: absolute
+   top: -45px
+   left: 0
+   z-index: -1
+   width: 83px
+   height: 83px
+  &::after
+   content: ''
+   @include background('../images/dist/icons/404-bottom.svg', center center)
+   position: absolute
+   bottom: -56px
+   right: -77px
+   z-index: -1
+   width: 145px
+   height: 145px
+ &-info
+  max-width: 960px
+  width: 100%
+  height: 205px
+  background: rgba(255, 255, 255, 0.6)
+  backdrop-filter: blur(20px)
+  border-radius: 15px
+  display: flex
+  flex-direction: column
+  margin-top: -150px
+  align-items: center
+  margin-left: auto
+  margin-right: auto
+  padding-top: 60px
+  position: relative
+  z-index: 1
+  span
+   font-weight: 300
+   font-size: 36px
+   color: $accent
+   margin-bottom: 40px
+   line-height: 120%
+
+.links-prevs  
+  display: inline-block
+  padding-left: 30px
+  font-weight: 300
+  font-size: 14px
+  color: $accent
+  line-height: 160%
+  @include background('../images/dist/icons/arr404.svg', center left)
+.breadcrumps
+ ul
+  text-align: center
+  display: flex
+  justify-content: center
+  li
+   font-size: 14px
+   font-weight: bold
+   margin-right: 3px
+   color: $accent
+   &:last-child
+    margin-right: 0
+   a
+    font-size: 14px
+    font-weight: 300
+
+ul
+ margin: 0
+ padding: 0
+ list-style-type: none
+
+
+.header
+ height: 80px
+ backdrop-filter: blur(15px)
+ box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05)
+ .containers
+  display: flex
+  align-items: center
+  height: 100%
+ .logo
+  margin-right: 40px
+ &__link
+  margin-right: 112px
+  display: inline-block
+  color: $accent
+  font-size: 16px
+  line-height: 24px
+  text-decoration: none
+  &:hover
+   text-decoration: none
+ .search
+  margin-right: 40px
+  max-width: 360px
+  width: 100%
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.15)
+  background-color: #fff
+  border-radius: 30px
+  padding-left: 13px
+  height: 30px
+  overflow: hidden
+  form
+   width: 100%
+   display: flex
+   align-items: center
+  input
+   width: 100%
+   background-color: #fff
+   border: none
+   outline: none
+   padding-left: 13px
+   padding-right: 13px
+   font-size: 14px
+   height: 29px
+  .btn-search
+   cursor: pointer
+   border: none
+   outline: none
+   width: 13px
+   height: 13px
+   background-image: url("../images/dist/icons/search.svg")
+   background-color: #fff
+   background-size: auto auto
+ .login
+  display: flex
+  align-items: center
+  span
+   margin-right: 68px
+   text-align: right
+   max-width: 260px
+   line-height: 120%
+   width: 100%
+   display: block
+   font-weight: 300
+   font-size: 14px
+
+ 
+.footer
+ margin-top: 80px
+ height: 140px
+ background-color: #005291
+ display: flex
+ flex-direction: column
+ align-items: center
+ justify-content: center
+ font-size: 14px
+ color: #fff
+ font-weight: 300
+ line-height: 21px
+ p
+  margin-bottom: 17px
+ a
+  color: #fff
+  text-decoration: underline
+
